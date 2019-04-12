@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xigua.dao.ItemMapper">
+  <resultMap id="BaseResultMap" type="com.example.xigua.entity.Item">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="key" jdbcType="VARCHAR" property="key" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    id, key, count, url
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultType="com.example.xigua.entity.Item">
+    select 
+    <include refid="Base_Column_List" />
+    from item
+    where key = #{key,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByUrl" parameterType="java.lang.String" resultType="com.example.xigua.entity.Item">
+    select  id, key, count, url
+    from item
+    where url = #{url,jdbcType=VARCHAR}
+  </select>
+
+
+  <insert id="insert" parameterType="com.example.xigua.entity.Item">
+    insert into item (key, count, url)
+    values (#{key,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR})
+  </insert>
+
+
+  <update id="updateByKey" parameterType="com.example.xigua.entity.Item">
+    update item
+    set count = #{count,jdbcType=INTEGER},
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

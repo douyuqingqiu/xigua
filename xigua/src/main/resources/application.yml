@@ -1,0 +1,15 @@
+
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/xigua?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+    ## 配置数据源
+    driver-class-name: com.mysql.cj.jdbc.Driver #数据库驱动程序类名
+
+    ######################### mybatis????????? ######################################
+mybatis:
+  mapper-locations: classpath:mapping/*.xml  # # ???mapper?????????λ??
+  type-aliases-package: com.example.xigua.entity  # # ?????????????λ??
